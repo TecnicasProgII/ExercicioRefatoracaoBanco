@@ -25,6 +25,7 @@ public class TelaOperacoes {
 	private Stage mainStage; 
 	private Scene cenaEntrada;
 	private Scene cenaOperacoes;
+	private Scene cenaEstatisticas;
 	private List<Operacao> operacoes;
 	private ObservableList<Operacao> operacoesConta;
 
@@ -125,6 +126,11 @@ public class TelaOperacoes {
               operacoes.add(op);        	  
         	  tfSaldo.setText(""+conta.getSaldo());
         	  operacoesConta.add(op);
+        	  
+        	//Aqui altera a categoria em tempo real:
+        	  cat.setText("Categoria: " + conta.getStrStatus());
+        	  
+          	  
         	}catch(NumberFormatException ex) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Valor inválido !!");
@@ -159,6 +165,10 @@ public class TelaOperacoes {
         	  tfSaldo.setText(""+conta.getSaldo());
         	  operacoesConta.add(op);
           	  tfSaldo.setText(""+conta.getSaldo());
+          	  
+          	//Aqui altera a categoria em tempo real:
+        	  cat.setText("Categoria: " + conta.getStrStatus());
+        	  
           	}catch(NumberFormatException ex) {
   				Alert alert = new Alert(AlertType.WARNING);
   				alert.setTitle("Valor inválido !!");
@@ -172,6 +182,18 @@ public class TelaOperacoes {
         btnVoltar.setOnAction(e->{
         	mainStage.setScene(cenaEntrada);
         });
+        
+        //Botao para estatisticas
+        Button btnEstatisticas = new Button("Ver estatisticas");
+        grid.add(btnEstatisticas, 1, 4);
+        // Acao do botao de estatisticas
+        btnEstatisticas.setOnAction(e ->{
+        	TelaEstatisticas t = new TelaEstatisticas(mainStage, cenaOperacoes, conta);
+			Scene scene = t.getTelaEstatisticas();
+			mainStage.setScene(scene);
+        	//mainStage.setScene(cenaEntrada);
+        });
+        
 		
         cenaOperacoes = new Scene(grid);
         return cenaOperacoes;

@@ -114,7 +114,7 @@ public class TelaOperacoes {
         	  GregorianCalendar date = new GregorianCalendar();
         	  Operacao op = new Operacao(
         			  date.get(GregorianCalendar.DAY_OF_MONTH),
-        			  date.get(GregorianCalendar.MONTH+1),
+        			  date.get(GregorianCalendar.MONTH)+1,
         			  date.get(GregorianCalendar.YEAR),
         			  date.get(GregorianCalendar.HOUR),
         			  date.get(GregorianCalendar.MINUTE),
@@ -151,7 +151,7 @@ public class TelaOperacoes {
         	  GregorianCalendar date = new GregorianCalendar();
         	  Operacao op = new Operacao(
         			  date.get(GregorianCalendar.DAY_OF_MONTH),
-        			  date.get(GregorianCalendar.MONTH+1),
+        			  date.get(GregorianCalendar.MONTH)+1,
         			  date.get(GregorianCalendar.YEAR),
         			  date.get(GregorianCalendar.HOUR),
         			  date.get(GregorianCalendar.MINUTE),
@@ -188,13 +188,12 @@ public class TelaOperacoes {
         grid.add(btnEstatisticas, 1, 4);
         // Acao do botao de estatisticas
         btnEstatisticas.setOnAction(e ->{
-        	TelaEstatisticas t = new TelaEstatisticas(mainStage, cenaOperacoes, conta);
+        	TelaEstatisticas t = new TelaEstatisticas(mainStage, cenaOperacoes, conta, operacoes);
 			Scene scene = t.getTelaEstatisticas();
 			mainStage.setScene(scene);
         	//mainStage.setScene(cenaEntrada);
         });
         
-		
         cenaOperacoes = new Scene(grid);
         return cenaOperacoes;
 	}
